@@ -13,7 +13,7 @@ public class AlarmTest {
 	public void test_pressionBasse() {
 		
 		Sensor sensor = mock(Sensor.class);
-		Alarm alarme = new Alarm(sensor);
+		Alarm alarme = new Alarm(sensor,17,21);
 		when(sensor.popNextPressurePsiValue()).thenReturn(15.0);
 		
 		alarme.check();
@@ -25,7 +25,7 @@ public class AlarmTest {
 	public void test_pressionHaute() {
 	
 		Sensor sensor = mock(Sensor.class);
-		Alarm alarme = new Alarm(sensor);
+		Alarm alarme = new Alarm(sensor,17,21);
 		when(sensor.popNextPressurePsiValue()).thenReturn(22.0);
 		
 		alarme.check();
@@ -37,7 +37,7 @@ public class AlarmTest {
 	public void test_pressionDansLeSeuil() {
 	
 		Sensor sensor = mock(Sensor.class);
-		Alarm alarme = new Alarm(sensor);
+		Alarm alarme = new Alarm(sensor,17,21);
 		when(sensor.popNextPressurePsiValue()).thenReturn(17.0);
 		
 		alarme.check();
@@ -49,8 +49,8 @@ public class AlarmTest {
 	public void test_alarmeResteDeclenchee() {
 	
 		Sensor sensor = mock(Sensor.class);
-		Alarm alarme = new Alarm(sensor);
-		when(sensor.popNextPressurePsiValue()).thenReturn(15.0).thenReturn(60.0);
+		Alarm alarme = new Alarm(sensor,17,21);
+		when(sensor.popNextPressurePsiValue()).thenReturn(15.0).thenReturn(18.0);
 		
 		alarme.check();
 	
